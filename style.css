@@ -1,0 +1,167 @@
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+
+
+.bold {
+    font-weight: 700;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header, main {
+    max-width: 1400px;
+    padding: 20px 5%;
+}
+
+header {
+    display:flex;
+    justify-content: center;
+}
+
+header picture img {
+    width: 250px;
+}
+
+#recipe-search {
+    width: 100%;
+    background: #E7E7E7;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#recipe-search:focus {
+    outline: none;
+}
+
+#recipe-search::placeholder {
+    color: rgb(0, 0, 0, .25);
+}
+
+#tag-container {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.tag {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+}
+
+.tag p {
+    margin: 0 10px 0 0;
+}
+
+#selector-container {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.selector-search {
+    border: none;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+
+.selector-search::placeholder {
+    color: white;    
+}
+
+#ingredient-search, .ingredient-tag {
+    background: #3282F7;
+}
+#device-search, .device-tag {
+    background: #68D9A4;
+}
+#utensil-search, .utensil-tag {
+    background: #ED6454;
+}
+
+#recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+article {
+    width: 30%;
+    background: #C7BEBE;
+    border-radius : 5px;
+    margin: 25px 0;
+}
+
+article:nth-child(3n + 2) {
+    margin: 25px 5%;
+}
+
+article picture img {
+    object-fit: cover;
+    min-height: 180px;
+}
+
+.article-desc {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #E7E7E7;
+    border-radius: 0 0 5px 5px;
+    height: 140px;
+}
+
+.article-header, .article-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.article-header {
+    justify-content: space-between;
+}
+
+.article-header h2 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.article-header img {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+}
+
+.recipe-time {
+    display: flex;
+    align-items: center;
+}
+
+.article-content {
+    font-size: 12px;
+    overflow: hidden;
+    gap: 10px;
+}
+
+ul.ingredients-list {
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0;
+    flex: 1;
+}
+
+p.recipe-desc {
+    flex: 1;
+    margin: 0;
+    /* display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
