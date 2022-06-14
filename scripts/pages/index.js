@@ -15,6 +15,7 @@ async function displayRecipes(recipes) {
     });
 }
 
+// fonction qui utilise les données récupérées par le json et retourne un objet qui contient la liste des ingrédients, appareils et ustensiles de toutes les recettes
 async function getRecipeKeywords(recipes) {
 
     const recipeKeywords = {
@@ -26,18 +27,36 @@ async function getRecipeKeywords(recipes) {
     recipes.forEach((recipe) => {
 
         recipe.ingredients.forEach(( ingredient => {
-            if ( !recipeKeywords.ingredients.includes(ingredient.ingredient.toLowerCase())) {
-                recipeKeywords.ingredients.push(ingredient.ingredient.toLowerCase()) 
+            // if ( !recipeKeywords.ingredients.includes(ingredient.ingredient.toLowerCase())) {
+            //     recipeKeywords.ingredients.push(ingredient.ingredient.toLowerCase()) 
+            // }
+            const alreadyExist = recipeKeywords.ingredients.find(elem => {
+                return elem.toLowerCase() === ingredient.ingredient.toLowerCase();
+            })
+            if (!alreadyExist) {
+                recipeKeywords.ingredients.push(ingredient.ingredient)
             }
         }))
         
-        if ( !recipeKeywords.apparels.includes(recipe.appliance.toLowerCase())) {
-            recipeKeywords.apparels.push(recipe.appliance.toLowerCase()) 
+        // if ( !recipeKeywords.apparels.includes(recipe.appliance.toLowerCase())) {
+        //     recipeKeywords.apparels.push(recipe.appliance.toLowerCase()) 
+        // }
+        const alreadyExist = recipeKeywords.apparels.find(elem => {
+            return elem.toLowerCase() === recipe.appliance.toLowerCase();
+        })
+        if (!alreadyExist) {
+            recipeKeywords.apparels.push(recipe.appliance)
         }
 
         recipe.ustensils.forEach(( ustensil => {
-            if ( !recipeKeywords.utensils.includes(ustensil.toLowerCase())) {
-                recipeKeywords.utensils.push(ustensil.toLowerCase()) 
+            // if ( !recipeKeywords.utensils.includes(ustensil.toLowerCase())) {
+            //     recipeKeywords.utensils.push(ustensil.toLowerCase()) 
+            // }
+            const alreadyExist = recipeKeywords.utensils.find(elem => {
+                return elem.toLowerCase() === ustensil.toLowerCase();
+            })
+            if (!alreadyExist) {
+                recipeKeywords.utensils.push(ustensil)
             }
         }))
     });

@@ -2,10 +2,25 @@
     font-family: 'Lato', sans-serif;
 }
 
-
-
 .bold {
     font-weight: 700;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+header img {
+    width: 50px;
+    height: 50px;
+}
+header h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #D04F4F;
+    margin: 0;
 }
 
 body {
@@ -34,9 +49,10 @@ header picture img {
     border: none;
     padding: 20px;
     border-radius: 5px;
+    font-size: 18px;
 }
 
-#recipe-search:focus {
+#recipe-search:focus, .selector-search:focus {
     outline: none;
 }
 
@@ -58,32 +74,58 @@ header picture img {
 }
 
 .tag p {
-    margin: 0 10px 0 0;
+    margin: 0 20px 0 0;
 }
 
 #selector-container {
     margin-top: 10px;
+    border: none;
     display: flex;
     gap: 20px;
 }
 
 .selector-search {
     border: none;
-    padding: 20px 10px;
+    padding: 20px;
     border-radius: 5px;
+    font-size: 18px;
+    caret-color: white;
 }
 
 .selector-search::placeholder {
-    color: white;    
+    color: white;
 }
 
-#ingredient-search, .ingredient-tag {
+.input-container {
+  max-width: 495px;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.input-container ul{
+    display: flex;
+    flex-flow: row wrap;
+    padding-left: 20px;
+    justify-content: space-between;
+}
+.input-container ul li{
+    width: 30%;
+    min-width: 142.5px;
+    list-style: none;
+    margin: 0;
+    font-size: 18px;
+    color: white;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#ingredient-search, .ingredient-tag, .blue {
     background: #3282F7;
 }
-#device-search, .device-tag {
+#device-search, .device-tag, .green {
     background: #68D9A4;
 }
-#utensil-search, .utensil-tag {
+#utensil-search, .utensil-tag, .red {
     background: #ED6454;
 }
 
