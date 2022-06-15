@@ -1,8 +1,10 @@
 function recipeFactory(data) {
-    const { appliance, description, id, ingredients, name, servings, time, ustensils } = data;
-
+    
     // Création du DOM de la liste des photographes
     function getRecipeDOM() {
+
+        const { appliance, description, id, ingredients, name, servings, time, ustensils } = data;
+
        const recipe = document.createElement( 'article' );
 
        const picture = document.createElement('picture')
@@ -63,5 +65,30 @@ function recipeFactory(data) {
 
         return (recipe);
     }
-    return { name, getRecipeDOM }
+
+    function getIngredientListDOM(recipeKeywords) {
+        // console.log(recipeKeywords.ingredients)
+        const ingredientList = document.createElement("ul");
+
+        const slicedIngredientsList = recipeKeywords.ingredients.slice(0, 30);
+
+        slicedIngredientsList.forEach(ingredient => {
+            const li = document.createElement('li')
+            li.innerHTML = ingredient;
+            ingredientList.appendChild(li)
+        })
+
+        // for (let i = 0; i < 30; i++) {
+            
+        //     const li = document.createElement('li')
+        //     li.innerHTML = recipeKeywords.ingredients[i];
+
+        //     ingredientList.appendChild(li)
+            
+        // }
+  
+        return ingredientList;
+    }
+
+    return { name, getRecipeDOM, getIngredientListDOM }
 }

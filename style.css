@@ -97,26 +97,42 @@ header picture img {
 }
 
 .input-container {
-  max-width: 495px;
+  max-width: 500px;
   border-radius: 5px;
   height: 100%;
+  position: relative;
 }
 
 .input-container ul{
     display: flex;
     flex-flow: row wrap;
-    padding-left: 20px;
+    padding: 0 20px;
     justify-content: space-between;
 }
 .input-container ul li{
     width: 30%;
-    min-width: 142.5px;
+    min-width: 150px;
     list-style: none;
     margin: 0;
     font-size: 18px;
     color: white;
     line-height: 30px;
     cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.input-container ul li:hover {
+    text-overflow: clip;
+    white-space: normal;
+    text-decoration: underline;
+}
+
+.chevron {
+    position: absolute;
+    right: 25px;
+    top: 25px;
 }
 
 #ingredient-search, .ingredient-tag, .blue {
