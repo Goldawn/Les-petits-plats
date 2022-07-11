@@ -1,7 +1,7 @@
 function recipeFactory(data) {
     
     // Création du DOM de la liste des photographes
-    function getRecipeDOM() {
+    const getRecipeDOM = () => {
 
         const { appliance, description, id, ingredients, name, servings, time, ustensils } = data;
 
@@ -9,6 +9,7 @@ function recipeFactory(data) {
 
        const picture = document.createElement('picture')
        const img = document.createElement('img')
+       img.setAttribute( 'src', "./assets/recette-default.webp")
 
        picture.appendChild(img)
 
@@ -66,7 +67,7 @@ function recipeFactory(data) {
         return (recipe);
     }
 
-    function getIngredientListDOM(recipeKeywords) {
+    const getIngredientListDOM = (recipeKeywords) => {
         // console.log(recipeKeywords.ingredients)
         const ingredientList = document.createElement("ul");
 
@@ -74,6 +75,7 @@ function recipeFactory(data) {
 
         slicedIngredientsList.forEach(ingredient => {
             const li = document.createElement('li')
+            li.setAttribute("class", "list-element ingredient-element")
             li.innerHTML = ingredient;
             ingredientList.appendChild(li)
         })
@@ -90,5 +92,47 @@ function recipeFactory(data) {
         return ingredientList;
     }
 
-    return { name, getRecipeDOM, getIngredientListDOM }
+    const getApparelListDOM = (recipeKeywords) => {
+        const apparelList = document.createElement("ul");
+
+        const slicedApparelList = recipeKeywords.apparels.slice(0, 30);
+
+        slicedApparelList.forEach(apparel => {
+            const li = document.createElement('li')
+            li.setAttribute("class", "list-element apparel-element")
+            li.innerHTML = apparel;
+            apparelList.appendChild(li)
+        })
+  
+        return apparelList;
+    }
+
+    const getUtensilListDOM = (recipeKeywords) => {
+        const utensilList = document.createElement("ul");
+
+        const slicedUtensilList = recipeKeywords.utensils.slice(0, 30);
+
+        slicedUtensilList.forEach(utensil => {
+            const li = document.createElement('li')
+            li.setAttribute("class", "list-element utensil-element")
+            li.innerHTML = utensil;
+            utensilList.appendChild(li)
+        })
+  
+        return utensilList;
+    }
+
+    const getTagElementDOM = (tagClass, tagName) => {
+        const tag = document.createElement("div");
+        tag.setAttribute("class", `tag ${tagClass}`)
+        // tag.setAttribute("onclick", "remove(this)")
+
+        const p = document.createElement("p")
+        p.innerHTML=tagName
+        tag.appendChild(p)
+
+        return tag;
+    }
+
+    return { name, getRecipeDOM, getIngredientListDOM, getApparelListDOM, getUtensilListDOM, getTagElementDOM }
 }

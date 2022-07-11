@@ -24,59 +24,25 @@
         <input id="recipe-search" type="search" placeholder="Rechercher une recette">
 
         <div id="tag-container">
-            <div class="tag ingredient-tag">
+            <!-- <div class="tag ingredient-tag">
                 <p>Coco</p>
-                <img src="assets/close.svg" alt="icone de suppression">
             </div>
-            <div class="tag utensil-tag">
+            <div class="tag utensil-tag" onclick="remove(this)">
                 <p>Batteur</p>
-                <img src="assets/close.svg" alt="icone de suppression">
-            </div>
+            </div> -->
         </div>
         <div id="selector-container">
             <div id="ingredient-list-container" class="input-container blue">
                 <input id="ingredient-search" class="selector-search" type="search" placeholder="Ingrédients">
-                <ul>
-                    <!-- <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>
-                    <li>Lait de coco</li>            -->
-                </ul>
-                <img class="chevron" src="assets/arrow-up.svg" alt="icone de chevron">
+                <img class="chevron chevron-down ingredient" src="assets/arrow-down.svg" alt="icone de chevron">
             </div>
-            <div class="input-container green">
+            <div id="apparel-list-container" class="input-container green">
                 <input id="device-search" class="selector-search" type="search" placeholder="Appareils">
-                <img class="chevron" src="assets/arrow-down.svg" alt="icone de chevron">
+                <img class="chevron chevron-down apparel" src="assets/arrow-down.svg" alt="icone de chevron">
             </div>
-            <div class="input-container red">
+            <div id="utensil-list-container" class="input-container red">
                 <input id="utensil-search" class="selector-search" type="search" placeholder="Ustensiles">
-                <img class="chevron" src="assets/arrow-down.svg" alt="icone de chevron">
+                <img class="chevron chevron-down utensil" src="assets/arrow-down.svg" alt="icone de chevron">
             </div>
         </div>
         <section id="recipes-container">
@@ -181,6 +147,8 @@
 
     <script src="scripts/pages/index.js"></script>
     <script src="scripts/factories/recipe.js"></script>
+    <script src="scripts/utils/search.js"></script>
+    <script src="scripts/utils/taglist.js"></script>
 </body>
 
 </html>
