@@ -112,6 +112,7 @@ async function init() {
     displayIngredients(recipeKeywords);
     displayApparels(recipeKeywords);
     displayUtensils(recipeKeywords);
+    search(recipeKeywords);
 }
 
 init();

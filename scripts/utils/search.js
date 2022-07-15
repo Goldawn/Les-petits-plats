@@ -1,4 +1,4 @@
-async function search() {
+async function search(currentKeywordsList) {
     
     const searchInput = document.getElementById("recipe-search");
     const recipes = await getRecipes()
@@ -20,7 +20,7 @@ async function search() {
                 }
             })
             console.log(filteredRecipes)
-            
+            console.log(currentKeywordsList)
             recipesContainer.innerHTML="";
             displayRecipes(filteredRecipes)
             const recipeKeywords = await getRecipeKeywords(filteredRecipes)
@@ -30,9 +30,9 @@ async function search() {
             displayIngredients(recipeKeywords);
             displayApparels(recipeKeywords);
             displayUtensils(recipeKeywords);
-            addTag()
         }
         else {
+            console.log(currentKeywordsList)
             recipesContainer.innerHTML="";
             displayRecipes(recipes)
             const recipeKeywords = await getRecipeKeywords(recipes)
@@ -42,14 +42,10 @@ async function search() {
             displayIngredients(recipeKeywords);
             displayApparels(recipeKeywords);
             displayUtensils(recipeKeywords);
-            addTag()
         }
-        // return filteredRecipes;
     }
     
     
     searchInput.addEventListener("input", filterRecipes)
 
 }
-
-search();

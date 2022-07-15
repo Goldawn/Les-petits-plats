@@ -1,10 +1,6 @@
 const searchInputs = document.querySelectorAll('.selector-search');
 const inputContainers = document.querySelectorAll('.input-container')
 
-const test = () => {
-    console.log("test")
-}
-
 const handleChevron = (event) => {
     if(event.target.classList.contains('chevron-down')) {
         event.target.classList.replace('chevron-down', 'chevron-up')
@@ -18,16 +14,18 @@ const handleChevron = (event) => {
     }
 }
 
-const updateRecipeKeywords = (recipeKeywordsArray, element, type) => {
-    let updatedRecipeKeywords;
+const updateKeywordsArray = (recipeKeywordsArray, element, type) => {
+    let updatedKeywordsArray = [];
     if (type === "++") {
-        console.log("++")
+        updatedKeywordsArray = recipeKeywordsArray
+        updatedKeywordsArray.push(element)
     }
-    else {
-        console.log(recipeKeywordsArray, element, type)
-        updatedRecipeKeywords = recipeKeywordsArray.filter(item => item !== element);
+    else if (type === "--"){
+        updatedKeywordsArray = recipeKeywordsArray.filter(item => item !== element);
     }
-    return updatedRecipeKeywords
+    else { console.log("erreur de type d'opération")}
+
+    return updatedKeywordsArray
 }
 
 const addTag = (recipeKeywords, tagCategory) => {
@@ -50,7 +48,7 @@ const addTag = (recipeKeywords, tagCategory) => {
             const tagModel = recipeFactory()
             if(element.classList.contains("utensil-element")) {
                 const tagDOM = tagModel.getTagElementDOM("utensil-tag", element.innerText)
-                const updatedArray = updateRecipeKeywords( recipeKeywords.utensils, element.innerText , "--")
+                const updatedArray = updateKeywordsArray( recipeKeywords.utensils, element.innerText , "--")
                 recipeKeywords.utensils = updatedArray;
                 element.remove();
                 tagContainer.appendChild(tagDOM)
@@ -58,7 +56,7 @@ const addTag = (recipeKeywords, tagCategory) => {
             }
             else if(element.classList.contains("apparel-element")) {
                 const tagDOM = tagModel.getTagElementDOM("apparel-tag", element.innerText)
-                const updatedArray = updateRecipeKeywords( recipeKeywords.apparels, element.innerText , "--")
+                const updatedArray = updateKeywordsArray( recipeKeywords.apparels, element.innerText , "--")
                 recipeKeywords.apparels = updatedArray;
                 element.remove();
                 tagContainer.appendChild(tagDOM)
@@ -66,7 +64,7 @@ const addTag = (recipeKeywords, tagCategory) => {
             }
             else {
                 const tagDOM = tagModel.getTagElementDOM("ingredient-tag", element.innerText)
-                const updatedArray = updateRecipeKeywords( recipeKeywords.ingredients, element.innerText , "--")
+                const updatedArray = updateKeywordsArray( recipeKeywords.ingredients, element.innerText , "--")
                 recipeKeywords.ingredients = updatedArray;
                 element.remove();
                 tagContainer.appendChild(tagDOM)
@@ -79,20 +77,20 @@ const addTag = (recipeKeywords, tagCategory) => {
 const removeTag = (element, recipeKeywords) => {
     element.addEventListener("click", () => {
         if (element.classList.contains("utensil-tag")) {
-            let array = recipeKeywords.utensils;
-            array.push(element.innerText)
+            const updatedArray = updateKeywordsArray( recipeKeywords.utensils, element.innerText , "++")
+            recipeKeywords.utensils = updatedArray;
             element.remove();
             displayUtensils(recipeKeywords);
         }
         else if (element.classList.contains("apparel-tag")) {
-            let array = recipeKeywords.apparels;
-            array.push(element.innerText)
+            const updatedArray = updateKeywordsArray( recipeKeywords.apparels, element.innerText , "++")
+            recipeKeywords.apparels = updatedArray;
             element.remove();
             displayApparels(recipeKeywords);
         }
         else {
-            let array = recipeKeywords.ingredients;
-            array.push(element.innerText)
+            const updatedArray = updateKeywordsArray( recipeKeywords.ingredients, element.innerText , "++")
+            recipeKeywords.ingredients = updatedArray;
             element.remove();
             displayIngredients(recipeKeywords);
         }
