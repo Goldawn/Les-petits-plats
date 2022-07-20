@@ -17,9 +17,6 @@ async function getRecipeKeywords(recipes) {
     recipes.forEach((recipe) => {
 
         recipe.ingredients.forEach(( ingredient => {
-            // if ( !recipeKeywords.ingredients.includes(ingredient.ingredient.toLowerCase())) {
-            //     recipeKeywords.ingredients.push(ingredient.ingredient.toLowerCase()) 
-            // }
             const alreadyExist = recipeKeywords.ingredients.find(elem => {
                 return elem.toLowerCase() === ingredient.ingredient.toLowerCase();
             })
@@ -27,10 +24,7 @@ async function getRecipeKeywords(recipes) {
                 recipeKeywords.ingredients.push(ingredient.ingredient)
             }
         }))
-        
-        // if ( !recipeKeywords.apparels.includes(recipe.appliance.toLowerCase())) {
-        //     recipeKeywords.apparels.push(recipe.appliance.toLowerCase()) 
-        // }
+
         const alreadyExist = recipeKeywords.apparels.find(elem => {
             return elem.toLowerCase() === recipe.appliance.toLowerCase();
         })
@@ -39,9 +33,6 @@ async function getRecipeKeywords(recipes) {
         }
 
         recipe.ustensils.forEach(( ustensil => {
-            // if ( !recipeKeywords.utensils.includes(ustensil.toLowerCase())) {
-            //     recipeKeywords.utensils.push(ustensil.toLowerCase()) 
-            // }
             const alreadyExist = recipeKeywords.utensils.find(elem => {
                 return elem.toLowerCase() === ustensil.toLowerCase();
             })

@@ -14,6 +14,7 @@ const handleChevron = (event) => {
     }
 }
 
+// Fonction qui ajoute ou enlève un élément de la liste des tags, puis la retourne
 const updateKeywordsArray = (recipeKeywordsArray, element, type) => {
     let updatedKeywordsArray = [];
     if (type === "++") {
@@ -28,6 +29,7 @@ const updateKeywordsArray = (recipeKeywordsArray, element, type) => {
     return updatedKeywordsArray
 }
 
+// Fonction qui ajoute un Event au clic sur les tags pour les afficher dans la bar des tags sélectionnés
 const addTag = (recipeKeywords, tagCategory) => {
     const tagContainer = document.getElementById("tag-container")
     let listElements;
@@ -74,6 +76,7 @@ const addTag = (recipeKeywords, tagCategory) => {
     })
 }
 
+// Fonction qui supprime un élément de la liste des tags sélectionnés et le rajoute dans les listes de tags
 const removeTag = (element, recipeKeywords) => {
     element.addEventListener("click", () => {
         if (element.classList.contains("utensil-tag")) {
@@ -83,6 +86,7 @@ const removeTag = (element, recipeKeywords) => {
             displayUtensils(recipeKeywords);
         }
         else if (element.classList.contains("apparel-tag")) {
+            console.log(recipeKeywords)
             const updatedArray = updateKeywordsArray( recipeKeywords.apparels, element.innerText , "++")
             recipeKeywords.apparels = updatedArray;
             element.remove();
