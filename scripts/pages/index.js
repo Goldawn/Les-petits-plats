@@ -1,8 +1,8 @@
 // Fonction qui récupère les recettes du fichier json
 async function getRecipes () {
-    const result = await fetch("data/recipes.json")
-    const recipes = await result.json()
-    return(recipes)
+    const result = await fetch("data/recipes.json");
+    const recipes = await result.json();
+    return(recipes);
 }
 
 // fonction qui utilise les données récupérées par le json et retourne un objet qui contient la liste des ingrédients, appareils et ustensiles de toutes les recettes
@@ -66,7 +66,7 @@ async function displayIngredients(recipeKeywords) {
         ingredientListContainer.removeChild(ingredientList)
     }
     ingredientListContainer.appendChild(ingredientDOM);
-    addTag(recipeKeywords, "ingredient")
+    addTag("ingredient")
 }
 
 // Fonction qui récupère la liste des appareils générés du DOM et les affiche sur la page
@@ -79,7 +79,7 @@ async function displayApparels(recipeKeywords) {
         apparelListContainer.removeChild(apparelList)
     }
     apparelListContainer.appendChild(ingredientDOM);
-    addTag(recipeKeywords, "apparel")
+    addTag("apparel")
 }
 
 // Fonction qui récupère la liste des ustensiles générés du DOM et les affiche sur la page
@@ -92,18 +92,18 @@ async function displayUtensils(recipeKeywords) {
         utensilListContainer.removeChild(utensilList)
     }
     utensilListContainer.appendChild(ingredientDOM);
-    addTag(recipeKeywords, "utensil")
+    addTag("utensil")
 }
 
 // Procédure de lancement à l'initialisation
 async function init() {
-    const recipes = await getRecipes()
-    const recipeKeywords = await getRecipeKeywords(recipes)
+    const recipes = await getRecipes();
+    const recipeKeywords = await getRecipeKeywords(recipes);
     displayRecipes(recipes);
     displayIngredients(recipeKeywords);
     displayApparels(recipeKeywords);
     displayUtensils(recipeKeywords);
-    search(recipeKeywords);
+    search();
 }
 
 init();

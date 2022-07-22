@@ -22,7 +22,7 @@ const updateKeywordsArray = (recipeKeywordsArray, element, type) => {
         updatedKeywordsArray.push(element)
     }
     else if (type === "--"){
-        updatedKeywordsArray = recipeKeywordsArray.filter(item => item !== element);
+        updatedKeywordsArray = recipeKeywordsArray.filter(item => item !== element);     
     }
     else { console.log("erreur de type d'opération")}
 
@@ -30,7 +30,7 @@ const updateKeywordsArray = (recipeKeywordsArray, element, type) => {
 }
 
 // Fonction qui ajoute un Event au clic sur les tags pour les afficher dans la bar des tags sélectionnés
-const addTag = (recipeKeywords, tagCategory) => {
+const addTag = (tagCategory) => {
     const tagContainer = document.getElementById("tag-container")
     let listElements;
     const ingredientElements = document.querySelectorAll("#ingredient-list-container .list-element")
@@ -50,54 +50,40 @@ const addTag = (recipeKeywords, tagCategory) => {
             const tagModel = recipeFactory()
             if(element.classList.contains("utensil-element")) {
                 const tagDOM = tagModel.getTagElementDOM("utensil-tag", element.innerText)
-                const updatedArray = updateKeywordsArray( recipeKeywords.utensils, element.innerText , "--")
-                recipeKeywords.utensils = updatedArray;
-                element.remove();
+                search();
                 tagContainer.appendChild(tagDOM)
-                removeTag(tagDOM, recipeKeywords);
+                removeTag(tagDOM);
             }
             else if(element.classList.contains("apparel-element")) {
                 const tagDOM = tagModel.getTagElementDOM("apparel-tag", element.innerText)
-                const updatedArray = updateKeywordsArray( recipeKeywords.apparels, element.innerText , "--")
-                recipeKeywords.apparels = updatedArray;
-                element.remove();
+                search();
                 tagContainer.appendChild(tagDOM)
-                removeTag(tagDOM, recipeKeywords);
+                removeTag(tagDOM);
             }
             else {
                 const tagDOM = tagModel.getTagElementDOM("ingredient-tag", element.innerText)
-                const updatedArray = updateKeywordsArray( recipeKeywords.ingredients, element.innerText , "--")
-                recipeKeywords.ingredients = updatedArray;
-                element.remove();
+                search();
                 tagContainer.appendChild(tagDOM)
-                removeTag(tagDOM, recipeKeywords);
+                removeTag(tagDOM);
             }            
         })
     })
 }
 
 // Fonction qui supprime un élément de la liste des tags sélectionnés et le rajoute dans les listes de tags
-const removeTag = (element, recipeKeywords) => {
+const removeTag = (element) => {
     element.addEventListener("click", () => {
         if (element.classList.contains("utensil-tag")) {
-            const updatedArray = updateKeywordsArray( recipeKeywords.utensils, element.innerText , "++")
-            recipeKeywords.utensils = updatedArray;
+            search()
             element.remove();
-            displayUtensils(recipeKeywords);
         }
         else if (element.classList.contains("apparel-tag")) {
-            console.log(recipeKeywords)
-            const updatedArray = updateKeywordsArray( recipeKeywords.apparels, element.innerText , "++")
-            recipeKeywords.apparels = updatedArray;
+            search()
             element.remove();
-            displayApparels(recipeKeywords);
         }
         else {
-            const updatedArray = updateKeywordsArray( recipeKeywords.ingredients, element.innerText , "++")
-            recipeKeywords.ingredients = updatedArray;
+            search();
             element.remove();
-            displayIngredients(recipeKeywords);
         }
     })
-    
 }
