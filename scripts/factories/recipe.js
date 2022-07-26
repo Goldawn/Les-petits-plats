@@ -67,6 +67,7 @@ function recipeFactory(data) {
         return (recipe);
     }
 
+    
     const getIngredientListDOM = (recipeKeywords) => {
         const ingredientList = document.createElement("ul");
 
