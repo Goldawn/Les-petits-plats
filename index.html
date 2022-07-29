@@ -22,133 +22,32 @@
 
     <main>
         <input id="recipe-search" type="search" placeholder="Rechercher une recette">
+        <img class="search-icon" src="assets/search.svg" alt="logo loupe">
 
         <div id="tag-container">
-            <!-- <div class="tag ingredient-tag">
-                <p>Coco</p>
-            </div>
-            <div class="tag utensil-tag" onclick="remove(this)">
-                <p>Batteur</p>
-            </div> -->
         </div>
         <div id="selector-container">
-            <div id="ingredient-list-container" class="input-container blue">
+            <div id="ingredient-list-container" class="input-container blue collapsed-box">
                 <input id="ingredient-search" class="selector-search" type="search" placeholder="Ingrédients">
-                <img class="chevron chevron-down ingredient" src="assets/arrow-down.svg" alt="icone de chevron">
+                <img class="chevron chevron-up ingredient" src="assets/arrow-up.svg" alt="icone de chevron">
             </div>
-            <div id="apparel-list-container" class="input-container green">
+            <div id="apparel-list-container" class="input-container green collapsed-box">
                 <input id="apparel-search" class="selector-search" type="search" placeholder="Appareils">
-                <img class="chevron chevron-down apparel" src="assets/arrow-down.svg" alt="icone de chevron">
+                <img class="chevron chevron-up apparel" src="assets/arrow-up.svg" alt="icone de chevron">
             </div>
-            <div id="utensil-list-container" class="input-container red">
+            <div id="utensil-list-container" class="input-container red collapsed-box">
                 <input id="utensil-search" class="selector-search" type="search" placeholder="Ustensiles">
-                <img class="chevron chevron-down utensil" src="assets/arrow-down.svg" alt="icone de chevron">
+                <img class="chevron chevron-up utensil" src="assets/arrow-up.svg" alt="icone de chevron">
             </div>
         </div>
         <section id="recipes-container">
-            <!-- <article>
-                <picture>
-                    <img src="" alt="">
-                </picture>
-                <div class="article-desc">
-                    <div class="article-header">
-                        <h2>Titre de la recette</h2>
-                        <div class="recipe-time bold">
-                            <img src="assets/clock.svg" alt="icone d'une horloge">
-                            <p>10 min</p>
-                        </div>
-                    </div>
-                    <div class="article-content">
-                        <ul class="ingredients-list">
-                            <li><span class="bold">Lait de coco : </span>400ml</li>
-                            <li><span class="bold">Crème de coco : </span> 4 cuillères</li>
-                            <li><span class="bold">Jus de citron : </span> 2</li>
-                        </ul>
-                        <p class="recipe-desc">
-                            Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
-                        </p>
-                    </div>
-                </div>
-            </article>
-            <article>
-                <picture>
-                    <img src="" alt="">
-                </picture>
-                <div class="article-desc">
-                    <div class="article-header">
-                        <h2>Titre de la recette</h2>
-                        <div class="recipe-time bold">
-                            <img src="assets/clock.svg" alt="icone d'une horloge">
-                            <p>10 min</p>
-                        </div>
-                    </div>
-                    <div class="article-content">
-                        <ul class="ingredients-list">
-                            <li><span class="bold">Lait de coco : </span>400ml</li>
-                            <li><span class="bold">Crème de coco : </span> 4 cuillères</li>
-                            <li><span class="bold">Jus de citron : </span> 2</li>
-                        </ul>
-                        <p class="recipe-desc">
-                            Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
-                        </p>
-                    </div>
-                </div>
-            </article>
-            <article>
-                <picture>
-                    <img src="" alt="">
-                </picture>
-                <div class="article-desc">
-                    <div class="article-header">
-                        <h2>Titre de la recette</h2>
-                        <div class="recipe-time bold">
-                            <img src="assets/clock.svg" alt="icone d'une horloge">
-                            <p>10 min</p>
-                        </div>
-                    </div>
-                    <div class="article-content">
-                        <ul class="ingredients-list">
-                            <li><span class="bold">Lait de coco : </span>400ml</li>
-                            <li><span class="bold">Crème de coco : </span> 4 cuillères</li>
-                            <li><span class="bold">Jus de citron : </span> 2</li>
-                        </ul>
-                        <p class="recipe-desc">
-                            Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
-                        </p>
-                    </div>
-                </div>
-            </article>
-            <article>
-                <picture>
-                    <img src="" alt="">
-                </picture>
-                <div class="article-desc">
-                    <div class="article-header">
-                        <h2>Titre de la recette</h2>
-                        <div class="recipe-time bold">
-                            <img src="assets/clock.svg" alt="icone d'une horloge">
-                            <p>10 min</p>
-                        </div>
-                    </div>
-                    <div class="article-content">
-                        <ul class="ingredients-list">
-                            <li><span class="bold">Lait de coco : </span>400ml</li>
-                            <li><span class="bold">Crème de coco : </span> 4 cuillères</li>
-                            <li><span class="bold">Jus de citron : </span> 2</li>
-                        </ul>
-                        <p class="recipe-desc">
-                            Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
-                        </p>
-                    </div>
-                </div>
-            </article> -->
         </section>
     </main>    
 
     <script src="scripts/utils/search.js"></script>
+    <script src="scripts/utils/taglist.js"></script>
     <script src="scripts/pages/index.js"></script>
     <script src="scripts/factories/recipe.js"></script>
-    <script src="scripts/utils/taglist.js"></script>
 </body>
 
 </html>

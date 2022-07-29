@@ -1,6 +1,6 @@
 function recipeFactory(data) {
     
-    // Création du DOM de la liste des photographes
+    // Création du DOM de la liste des recettes
     const getRecipeDOM = () => {
 
         const { appliance, description, id, ingredients, name, servings, time, ustensils } = data;
@@ -66,8 +66,8 @@ function recipeFactory(data) {
 
         return (recipe);
     }
-
     
+    // Création du DOM de la liste des ingrédients
     const getIngredientListDOM = (recipeKeywords) => {
         const ingredientList = document.createElement("ul");
 
@@ -83,6 +83,7 @@ function recipeFactory(data) {
         return ingredientList;
     }
 
+    // Création du DOM de la liste des appareils
     const getApparelListDOM = (recipeKeywords) => {
         const apparelList = document.createElement("ul");
 
@@ -98,6 +99,7 @@ function recipeFactory(data) {
         return apparelList;
     }
 
+    // Création du DOM de la liste des ustensiles
     const getUtensilListDOM = (recipeKeywords) => {
         const utensilList = document.createElement("ul");
 
@@ -113,6 +115,7 @@ function recipeFactory(data) {
         return utensilList;
     }
 
+    // Création du DOM des tags
     const getTagElementDOM = (tagClass, tagName) => {
         const tag = document.createElement("div");
         tag.setAttribute("class", `tag ${tagClass}`)

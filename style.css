@@ -6,9 +6,26 @@
     font-weight: 700;
 }
 
-.hide {
-    display: none;
+.collapsed-box {
+    width: 300px;
+    height: 62px !important;
 }
+.collapsed-box ul {
+    visibility: hidden;
+}
+
+.half-opacity {
+    opacity: 50%;
+}
+
+.hide {
+    display: none !important;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 header {
     display: flex;
@@ -33,12 +50,14 @@ body {
     align-items: center;
 }
 
-header, main {
+main {
     max-width: 1400px;
-    padding: 20px 5%;
+    padding: 20px 60px;
+    width: 100%;
 }
 
 header {
+    padding: 20px 60px;
     display:flex;
     justify-content: center;
 }
@@ -62,6 +81,11 @@ header picture img {
 
 #recipe-search::placeholder {
     color: rgb(0, 0, 0, .25);
+}
+
+.search-icon {
+    position: absolute;
+    transform: translate(-50px, 13px)
 }
 
 #tag-container {
@@ -99,6 +123,7 @@ header picture img {
     border: none;
     display: flex;
     gap: 20px;
+    position: absolute;
 }
 
 .selector-search {
@@ -106,12 +131,20 @@ header picture img {
     padding: 20px;
     border-radius: 5px;
     font-size: 18px;
+    color: white;
     caret-color: white;
-    /* width: 100%; */
+    width: calc(100% - 60px);
+}
+.selector-search:hover {
+    background: #0000000c !important;
 }
 
 .selector-search::placeholder {
     color: white;
+    opacity: 50%;
+}
+.collapsed-box .selector-search::placeholder {
+    opacity: 100%;
 }
 
 .input-container {
@@ -151,6 +184,12 @@ header picture img {
     position: absolute;
     right: 25px;
     top: 25px;
+    padding: 10px 7px;
+    border-radius: 5px;
+    transform: translateY(-10px);
+}
+.chevron:hover {
+    background: #00000041;
 }
 
 #ingredient-search, .ingredient-tag, .blue {
@@ -166,12 +205,13 @@ header picture img {
 #recipes-container {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 80px;
 }
 
 article {
     width: 30%;
     background: #C7BEBE;
-    border-radius : 5px;
+    border-radius : 8px;
     margin: 25px 0;
 }
 
@@ -183,6 +223,7 @@ article img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-radius: 8px 8px 0 0;
 }
 
 .article-desc {
@@ -190,7 +231,7 @@ article img {
     flex-direction: column;
     padding: 20px;
     background: #E7E7E7;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 8px 8px;
     height: 140px;
 }
 
@@ -223,6 +264,7 @@ article img {
     font-size: 12px;
     overflow: hidden;
     gap: 10px;
+    height: 85px;
 }
 
 ul.ingredients-list {
@@ -237,3 +279,12 @@ p.recipe-desc {
     margin: 0;
 }
 
+p.no-recipe {
+    font-size: 20px;
+    margin-top: 30px;
+    width: 100%;
+}
+img.no-results {
+    width: 100px;
+    margin: auto;
+}

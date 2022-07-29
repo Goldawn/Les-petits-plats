@@ -52,20 +52,16 @@ const search = async () => {
     // Fonction qui filtre une liste de recettes en regardant quels tags sont sélectionnés par l'utilisateur
     const filterByTags = (filteredRecipes, toggledTags) => {
 
-        // console.log(filteredRecipes)
-        // console.log(toggledTags)
-
         const {apparelsTag, ingredientsTag, utensilsTag } = toggledTags
         if ( ingredientsTag.length > 0 ) {
                         
-            let filteredByTagsRecipes = [];
+            let filteredByTagsRecipes;
             ingredientsTag.forEach( ingredientTag => {
                 filteredByTagsRecipes = [];
                 filteredRecipes.forEach(filteredRecipe => {
                     filteredRecipe.ingredients.forEach(ingredient => {
                         if(ingredientTag === ingredient.ingredient) {
                             filteredByTagsRecipes.push(filteredRecipe)
-                            console.log(filteredByTagsRecipes)
                         }
                     })
                 })
@@ -160,6 +156,14 @@ const search = async () => {
         return array.filter(value => value.toLowerCase().includes(string.toLowerCase()))
     }
 
+    // Fonction qui agrandit la div qui contient les tags
+    const extendTagContainer = (item) => {
+        item.classList.remove("collapsed-box");
+        item.children[1].classList.replace('chevron-up', 'chevron-down')
+        item.children[1].setAttribute("src", "assets/arrow-down.svg")
+    }
+
+    // Fonction qui affiche les ingrédients disponibles pour la recherche actuelle
     const handleIngredientInputs = async (event) => {
         const recipeKeywords = await getRecipeKeywords(recipes)
         const allIngredients = recipeKeywords.ingredients;
@@ -167,8 +171,11 @@ const search = async () => {
         const result = filterByValue(allIngredients, event.target.value)
         recipeKeywords.ingredients = result;
         displayIngredients(recipeKeywords)
+        const ingredientListContainer = document.getElementById("ingredient-list-container")
+        extendTagContainer(ingredientListContainer)
     }
 
+    // Fonction qui affiche les appareils disponibles pour la recherche actuelle
     const handleApparelInputs = async (event) => {
         const recipeKeywords = await getRecipeKeywords(recipes)
         const allApparels = recipeKeywords.apparels;
@@ -176,8 +183,11 @@ const search = async () => {
         const result = filterByValue(allApparels, event.target.value)
         recipeKeywords.apparels = result;
         displayApparels(recipeKeywords)
+        const apparelListContainer = document.getElementById("apparel-list-container")
+        extendTagContainer(apparelListContainer)
     }
 
+    // Fonction qui affiche les ustensiles disponibles pour la recherche actuelle
     const handleUtensilInputs = async (event) => {
         const recipeKeywords = await getRecipeKeywords(recipes)
         const allUtensils = recipeKeywords.utensils;
@@ -185,6 +195,8 @@ const search = async () => {
         const result = filterByValue(allUtensils, event.target.value)
         recipeKeywords.utensils = result;
         displayUtensils(recipeKeywords)
+        const utensilListContainer = document.getElementById("utensil-list-container")
+        extendTagContainer(utensilListContainer)
     }
 
     // Fonction qui ajoute les écouteurs d'évenement au changement de valeur des inputs des listes de tags 
@@ -196,7 +208,7 @@ const search = async () => {
         apparelInput.addEventListener("input", handleApparelInputs)
         utensilInput.addEventListener("input", handleUtensilInputs)
     }
-    
+
     filterRecipes()
     searchInTags();
     searchInput.addEventListener("input", filterRecipes)

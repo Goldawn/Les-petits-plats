@@ -47,12 +47,26 @@ const getRecipeKeywords = async (recipes) => {
 // Fonction qui récupère les recettes générés du DOM et les affiche sur la page
 const displayRecipes = async (recipes) => {
     const recipesContainer = document.getElementById("recipes-container");
+    
+    if(recipes.length !== 0) {
+        recipes.forEach((recipe) => {
+            const recipeModel = recipeFactory(recipe);
+            const recipeDOM = recipeModel.getRecipeDOM();
+            recipesContainer.appendChild(recipeDOM);
+        });
+    }
+    else { 
+        const img = document.createElement("img")
+        img.setAttribute("src", "./assets/no-results.png")
+        img.setAttribute("class", "no-results")
+        const p = document.createElement("p")
+        p.setAttribute("class", "no-recipe")
+        p.innerText = "Aucune recette ne correspond à vos critères."
 
-    recipes.forEach((recipe) => {
-        const recipeModel = recipeFactory(recipe);
-        const recipeDOM = recipeModel.getRecipeDOM();
-        recipesContainer.appendChild(recipeDOM);
-    });
+        recipesContainer.appendChild(p)
+        recipesContainer.appendChild(img)
+    }
+    
 }
 
 // Fonction qui récupère la liste des ingrédients générés du DOM et les affiche sur la page
@@ -96,15 +110,9 @@ const displayUtensils = async (recipeKeywords) => {
 
 // Procédure de lancement à l'initialisation
     const init = () => {
-
-        // const recipes = await getRecipes();
-        // const recipeKeywords = await getRecipeKeywords(recipes);
-        // displayRecipes(recipes);
-        // displayIngredients(recipeKeywords);
-        // displayApparels(recipeKeywords);
-        // displayUtensils(recipeKeywords);
         search();
+        handleTagContainer();
+        collapseTagContainer();
     }
-
 
 init();
