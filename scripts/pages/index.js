@@ -108,11 +108,26 @@ const displayUtensils = async (recipeKeywords) => {
     addTag("utensil")
 }
 
+// Fonction qui gère l'event déclenché au clic sur l'icone de loupe
+const handleClick = () => {
+    const searchInput = document.getElementById("recipe-search")
+    searchInput.focus();
+}
+
+// Fonction qui empêche le drag & drop sur l'icone de loupe et ajoute un focus sur l'input au click
+const handleSearchIcon = () => {
+    const loupe = document.querySelector(".search-icon")
+    loupe.setAttribute("draggable", "false")
+    loupe.addEventListener("click", handleClick)
+}
+
+
 // Procédure de lancement à l'initialisation
     const init = () => {
         search();
         handleTagContainer();
         collapseTagContainer();
+        handleSearchIcon();
     }
 
 init();

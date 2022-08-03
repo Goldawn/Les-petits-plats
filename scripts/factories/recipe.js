@@ -6,6 +6,7 @@ function recipeFactory(data) {
         const { appliance, description, id, ingredients, name, servings, time, ustensils } = data;
 
        const recipe = document.createElement( 'article' );
+       recipe.setAttribute('class', "recipe")
 
        const picture = document.createElement('picture')
        const img = document.createElement('img')
