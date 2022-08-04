@@ -11,7 +11,8 @@ const search = async () => {
             utensilsTag: []
         };
         const tagList = document.querySelectorAll(".tag");
-        tagList.forEach(tag => {
+
+        for (const tag of tagList) {
             if (tag.classList.contains("ingredient-tag")) {
                 toggledTags.ingredientsTag.push(tag.innerText)
             }
@@ -20,8 +21,8 @@ const search = async () => {
             }
             else if (tag.classList.contains("utensil-tag")) {
                 toggledTags.utensilsTag.push(tag.innerText)
-            }
-        })
+            }  
+        }
         return toggledTags;
     }
 
@@ -29,71 +30,94 @@ const search = async () => {
     const updateRecipeKeywords = (recipeKeywords, toggledTags) => {
 
         const { ingredientsTag, apparelsTag, utensilsTag } = toggledTags;
+
         if(ingredientsTag.length > 0) {
-            ingredientsTag.forEach(ingredient => {
-                const updatedIngredients = recipeKeywords.ingredients.filter(item => item !== ingredient)
+
+            for (const tag of ingredientsTag) {
+                let updatedIngredients = [];
+                for (const ingredient of recipeKeywords.ingredients) {
+                    if( ingredient !== tag ) {
+                        updatedIngredients.push(ingredient)
+                    }
+                }
                 recipeKeywords.ingredients = updatedIngredients
-            })
+            }
         }
+
         if (apparelsTag.length > 0) {
-            apparelsTag.forEach(apparel => {
-                const updatedApparels = recipeKeywords.apparels.filter(item => item !== apparel)
+
+            for (const tag of apparelsTag) {
+                let updatedApparels = [];
+                for (const apparel of recipeKeywords.apparels) {
+                    if( apparel !== tag ) {
+                        updatedApparels.push(apparel)
+                    }
+                }
                 recipeKeywords.apparels = updatedApparels
-            })
+            }
         }
+
         if (utensilsTag.length > 0) {
-            utensilsTag.forEach(utensil => {
-                const updatedUtensils = recipeKeywords.utensils.filter(item => item !== utensil)
+
+            for (const tag of utensilsTag) {
+                let updatedUtensils = [];
+                for (const utensil of recipeKeywords.utensils) {
+                    if( utensil !== tag ) {
+                        updatedUtensils.push(utensil)
+                    }
+                }
                 recipeKeywords.utensils = updatedUtensils
-            })
-        }
+            }
+        } 
     }
 
     // Fonction qui filtre une liste de recettes en regardant quels tags sont sélectionnés par l'utilisateur
-    const filterByTags = (filteredRecipes, toggledTags) => {
+    const filterByTags = (filteredRecipes, toggledTags) => {   
 
         const {apparelsTag, ingredientsTag, utensilsTag } = toggledTags
         if ( ingredientsTag.length > 0 ) {
                         
             let filteredByTagsRecipes;
-            ingredientsTag.forEach( ingredientTag => {
+
+            for (const ingredientTag of ingredientsTag) {
                 filteredByTagsRecipes = [];
-                filteredRecipes.forEach(filteredRecipe => {
-                    filteredRecipe.ingredients.forEach(ingredient => {
+                for (const filteredRecipe of filteredRecipes) {
+                    for (const ingredient of filteredRecipe.ingredients) {
                         if(ingredientTag === ingredient.ingredient) {
                             filteredByTagsRecipes.push(filteredRecipe)
                         }
-                    })
-                })
+                    }
+                }
                 filteredRecipes = filteredByTagsRecipes;
-            })
+            }
 
             filteredRecipes = filteredByTagsRecipes;
         }
         if (apparelsTag.length > 0 ) {
             let filteredByTagsRecipes = [];
 
-            filteredRecipes.forEach(recipe => {
+            for (const recipe of filteredRecipes) {
                 if(apparelsTag.includes(recipe.appliance)) {
                     filteredByTagsRecipes.push(recipe)
                     filteredRecipes = filteredByTagsRecipes;
                 }
-            })
+            }
         }
+
         if ( utensilsTag.length > 0 ) {
             let filteredByTagsRecipes = [];
-            utensilsTag.forEach(utensilTag => {
+
+            for (const utensilTag of utensilsTag) {
                 filteredByTagsRecipes = [];
-                filteredRecipes.forEach(filteredRecipe => {
-                    filteredRecipe.ustensils.forEach(ustensil => {
+                for (const filteredRecipe of filteredRecipes) {
+                    for (const ustensil of filteredRecipe.ustensils) {
                         if(utensilTag === ustensil) {
                             filteredByTagsRecipes.push(filteredRecipe)
-                            filteredRecipes = filteredByTagsRecipes;
                         }
-                    })
-                })
+                    }
+                }
                 filteredRecipes = filteredByTagsRecipes;
-            })
+            }
         }
         return filteredRecipes;
     }
@@ -111,11 +135,13 @@ const search = async () => {
         let filteredRecipes =[]
 
         if(searchInput.value.length > 2) {
-            recipes.forEach(recipe => {
+   
+            for (const recipe of recipes) {
                 if (recipe.name.toLowerCase().includes(searchInput.value.toLowerCase()) || recipe.description.toLowerCase().includes(searchInput.value.toLowerCase())) {
                     filteredRecipes.push(recipe)
                 }
-            })
+            }
+
             const toggledTags = getToggledTags();
             recipesContainer.innerHTML="";
             filteredRecipes = filterByTags(filteredRecipes, toggledTags);
@@ -153,7 +179,13 @@ const search = async () => {
 
     // Fonction qui retourne un tableau avec des éléments qui contiennent une chaîne de caractère passé en paramètre 
     const filterByValue = (array, string) => {
-        return array.filter(value => value.toLowerCase().includes(string.toLowerCase()))
+        let filteredByValue = [];
+        for (const i of array) {
+            if( i.toLowerCase().includes(string.toLowerCase())) {
+                filteredByValue.push(i)
+            }
+        }
+        return filteredByValue;
     }
 
     // Fonction qui agrandit la div qui contient les tags
@@ -212,11 +244,6 @@ const search = async () => {
     filterRecipes()
     searchInTags();
     
-    // const allRecipes = document.querySelectorAll(".recipe")
-    // allRecipes.forEach(recipe => {
-    //     recipe.addEventListener("click", openModal)
-    // })
-
     searchInput.addEventListener("input", filterRecipes)
 
 }

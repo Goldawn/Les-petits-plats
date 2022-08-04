@@ -6,7 +6,11 @@ const updateKeywordsArray = (recipeKeywordsArray, element, type) => {
         updatedKeywordsArray.push(element)
     }
     else if (type === "--"){
-        updatedKeywordsArray = recipeKeywordsArray.filter(item => item !== element);     
+        for (const keyword of recipeKeywordsArray) {
+            if(keyword !== element) {
+                updatedKeywordsArray.push(keyword)
+            }
+        }
     }
     else { console.log("erreur de type d'opération")}
 
@@ -29,7 +33,8 @@ const addTag = (tagCategory) => {
     else {
         listElements = utensilElements;
     }
-    listElements.forEach(element => {
+
+    for (const element of listElements) {
         element.addEventListener("click", () => {
             const tagModel = recipeFactory()
             if(element.classList.contains("utensil-element")) {
@@ -51,28 +56,18 @@ const addTag = (tagCategory) => {
                 removeTag(tagDOM);
             }            
         })
-    })
+    }
+
 }
 
 // Fonction qui supprime un élément de la liste des tags sélectionnés et le rajoute dans les listes de tags
 const removeTag = (element) => {
     element.addEventListener("click", () => {
-        if (element.classList.contains("utensil-tag")) {
-            search()
-            element.remove();
-        }
-        else if (element.classList.contains("apparel-tag")) {
-            search()
-            element.remove();
-        }
-        else {
-            search();
-            element.remove();
-        }
+        search();
+        element.remove();
     })
 }
 
-// Fonction qui affiche ou non la liste des tags au clic sur le chevro
 const chevrons = document.querySelectorAll('.chevron')
 const inputContainers = document.querySelectorAll('.input-container')
 
@@ -104,7 +99,8 @@ const toggleTagPlaceholder = (index, boolean) => {
 
 // Fonction qui gère l'affichage des conteneur de tags au clic du chevron
 const handleTagContainer = () => {
-    chevrons.forEach( (chevron, index) => {
+
+    for (const [index, chevron] of chevrons.entries()) {
         chevron.addEventListener("mouseup", () => {
             
             if(chevron.classList.contains('chevron-down')) {
@@ -120,7 +116,7 @@ const handleTagContainer = () => {
                 toggleTagPlaceholder(index, false)
             }
         })
-    })
+    }
 }
 
 // Fonction qui réduit les div qui contiennent les tags au clic d'un autre élément de la page
