@@ -3,7 +3,7 @@ function recipeFactory(data) {
     // Création du DOM de la liste des recettes
     const getRecipeDOM = () => {
 
-        const { appliance, description, id, ingredients, name, servings, time, ustensils } = data;
+        const { description, ingredients, name, time } = data;
 
        const recipe = document.createElement( 'article' );
        recipe.setAttribute('class', "recipe")
@@ -11,6 +11,7 @@ function recipeFactory(data) {
        const picture = document.createElement('picture')
        const img = document.createElement('img')
        img.setAttribute( 'src', "./assets/recette-default.webp")
+       img.setAttribute( 'alt', "image placeholder d'une recette de cuisine")
 
        picture.appendChild(img)
 

@@ -57,18 +57,8 @@ const addTag = (tagCategory) => {
 // Fonction qui supprime un élément de la liste des tags sélectionnés et le rajoute dans les listes de tags
 const removeTag = (element) => {
     element.addEventListener("click", () => {
-        if (element.classList.contains("utensil-tag")) {
-            search()
-            element.remove();
-        }
-        else if (element.classList.contains("apparel-tag")) {
-            search()
-            element.remove();
-        }
-        else {
-            search();
-            element.remove();
-        }
+        search()
+        element.remove();
     })
 }
 
