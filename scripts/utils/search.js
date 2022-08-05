@@ -212,11 +212,6 @@ const search = async () => {
     filterRecipes()
     searchInTags();
     
-    // const allRecipes = document.querySelectorAll(".recipe")
-    // allRecipes.forEach(recipe => {
-    //     recipe.addEventListener("click", openModal)
-    // })
-
     searchInput.addEventListener("input", filterRecipes)
 
 }
