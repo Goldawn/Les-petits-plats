@@ -117,7 +117,7 @@ const handleClick = () => {
 // Fonction qui empêche le drag & drop sur l'icone de loupe et ajoute un focus sur l'input au click
 const handleSearchIcon = () => {
     const loupe = document.querySelector(".search-icon")
-    loupe.setAttribute("draggable", "false")
+    // loupe.setAttribute("draggable", "false")
     loupe.addEventListener("click", handleClick)
 }
 
